@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Table</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy7uQ3zSfF8E5eg6aspjC8N9eD6I5j9em"
+      crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="mb-4">Task 1: Edit Data</h1>
+          <div id="root"></div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script type="text/babel">
+      function EditData({ data, onChange }) {
+        const handleInputChange = (e, key) => {
+          const newData = { ...data, [key]: e.target.value };
+          onChange(newData);
+        };
+
+        return (
+          <div className="table-responsive">
+            <table className="table">
+              <tbody className="table-bordered">
+                <tr>
+                  <td>
+                    <label className="mr-2">Onboarding Call</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control mb-2"
+                      type="text"
+                      value={data.onboardingCall}
+                      onChange={(e) => handleInputChange(e, "onboardingCall")}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="mr-2">Google Search Console Access</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control mb-2"
+                      type="text"
+                      value={data.googleSearchConsoleAccess}
+                      onChange={(e) =>
+                        handleInputChange(e, "googleSearchConsoleAccess")
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="mr-2">Google Analytics Access</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control mb-2"
+                      type="text"
+                      value={data.googleAnalyticsAccess}
+                      onChange={(e) =>
+                        handleInputChange(e, "googleAnalyticsAccess")
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="mr-2">Website Access</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control mb-2"
+                      type="text"
+                      value={data.googleAnalyticsAccess}
+                      onChange={(e) =>
+                        handleInputChange(e, "googleAnalyticsAccess")
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="mr-2">Techinal Audit</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control mb-2"
+                      type="text"
+                      value={data.googleAnalyticsAccess}
+                      onChange={(e) =>
+                        handleInputChange(e, "googleAnalyticsAccess")
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="mr-2">Competitor Analytics</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control mb-2"
+                      type="text"
+                      value={data.googleAnalyticsAccess}
+                      onChange={(e) =>
+                        handleInputChange(e, "googleAnalyticsAccess")
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="mr-2">Index Links</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control mb-2"
+                      type="text"
+                      value={data.googleAnalyticsAccess}
+                      onChange={(e) =>
+                        handleInputChange(e, "googleAnalyticsAccess")
+                      }
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label className="mr-2">Video Recap</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control mb-2"
+                      type="text"
+                      value={data.googleAnalyticsAccess}
+                      onChange={(e) =>
+                        handleInputChange(e, "googleAnalyticsAccess")
+                      }
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+
+      function App() {
+        const initialData = [{ id: 1, onboardingCall: "" }];
+
+        const [tableData, setTableData] = React.useState(initialData);
+
+        const handleChange = (rowData) => {
+          const newData = tableData.map((item) =>
+            item.id === rowData.id ? rowData : item
+          );
+          setTableData(newData);
+        };
+
+        return (
+          <div>
+            {tableData.map((row) => (
+              <EditData key={row.id} data={row} onChange={handleChange} />
+            ))}
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
